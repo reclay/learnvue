@@ -5,6 +5,6 @@
 
 SPA(Single-page application)
 
-MVVM(model view view model)
+MVVM(model view viewmodel)
 
 一下子就多了好多

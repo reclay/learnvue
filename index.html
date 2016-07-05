@@ -26,9 +26,13 @@
     <ul>
       <li v-for="name in names">
         <span>{{name.text}}</span>
+        {{$index}}
         <button v-on:click="removeItem($index)">X</button>
+        {{$data}}{{$el}}
     </ul>
   </div>
+
+  <div>{{{ raw_html }}}</div>
 
 </body>
 <script src="js/vue.js"></script>
