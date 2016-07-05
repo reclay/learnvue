@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+  <div id="hello">
+    <p>{{helloworld}}</p>
+    <input v-model="helloworld" />
+  </div>
+
+  <div id="for">
+    <ul>
+      <li v-for="name in names">
+        {{name.text}}
+      </li>
+    </ul>
+  </div>
+
+  <div id="click">
+    <p>{{hello}}</p>
+    <button v-on:click="reverseMessage">ReverseMessage</button>
+  </div>
+
+  <div id="summary">
+    <input v-model="add" v-on:keyup.enter="addFunction" />
+    <ul>
+      <li v-for="name in names">
+        <span>{{name.text}}</span>
+        <button v-on:click="removeItem($index)">X</button>
+    </ul>
+  </div>
+
+</body>
+<script src="js/vue.js"></script>
+<script>
+  new Vue({
+    el:'#hello',
+    data:{
+      helloworld:"hello world!",
+    }
+  });
+
+  new Vue({
+    el:"#for",
+    data:{
+      names:[
+        {text:'luojian'},
+        {text:'cuifan'},
+        {text:'zhaozebin'},
+      ]
+    }
+  });
+
+  new Vue({
+    el:"#click",
+    data:{
+      hello:"hello world!",
+    },
+    methods:{
+      reverseMessage:function(){
+        this.hello=this.hello.split('').reverse().join('');
+      }
+    }
+  });
+
+  new Vue({
+    el:"#summary",
+    data:{
+      add:"",
+      names:[
+        {text:'luojian'},
+      ]
+    },
+    methods:{
+      addFunction:function(){
+        var name=this.add.trim();
+        if(name){
+          this.names.push({text:name});
+          this.add="";
+        }
+      },
+      removeItem:function(index){
+        this.names.splice(index,1);
+      }
+    }
+  });
+</script>
+</html>
