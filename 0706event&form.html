@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+  指令 (Directives) 是特殊的带有前缀 v- 的特性
+  修饰符是点号打头的指令后缀
+  Vue.js 为 v-on 提供两个事件修饰符：.prevent 与 .stop,Vue.js 允许为 v-on 添加按键修饰符
+  v-on:keyup.enter
+  v-on:submit.prevent
+  v-on:click.stop
+  <div id="event">
+    <input type="submit" v-on:click="say('hello!', $event)" value="submit"/>
+  </div>
+
+  <div id="form">
+    <p>message:{{id}}</p>
+    <input type="text" v-model="id" /><br />
+
+    <input type="checkbox" id="checkbox1" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <p>for是html的，有for则点击文计也会改变框</p>
+  </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+  new Vue({
+    el:"#event",
+    data:{
+
+    },
+    methods: {
+      say: function (msg, event) {
+        // 现在我们可以访问原生事件对象
+        event.preventDefault();
+      }
+    }
+  });
+  new Vue({
+    el:"#form",
+    data:{
+      'id':'',
+      'checked':true,
+    }
+  });
+</script>
+</html>

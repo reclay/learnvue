@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+  指令 (Directives) 是特殊的带有前缀 v- 的特性
+  修饰符是点号打头的指令后缀
+  <div id="if">
+    <p v-if="ok">ok</p>
+    <p v-else>not ok</p>
+
+    <template v-if="true">
+    template不会显示
+    </template>
+
+    <p v-show="true">
+      vshow
+    </p>
+
+    好像条件里面不能判断等于
+    <p v-if="id1 = 1">      1    </p>
+    <p v-if="id < 2">      2    </p>
+    <p v-else>3</p>
+    <p v-show="id > 2">      1    </p>
+    <p v-show="id = 2">      2    </p>
+  </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+  new Vue({
+    el:"#if",
+    data:{
+      'ok':false,
+      'true':true,
+      'id1':1,
+      'id':2,
+    },
+  });
+</script>
+</html>

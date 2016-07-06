@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <link href="css/0706.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="hi">
+    <p v-for:="idnum in id">{{idnum+1}}</p>
+  </div>
+
+  <div id="compute">
+    {{a}}:{{b}}:{{c}}
+  </div>
+
+  <div class="style">
+    <p class="red" v-bind:class="{'border':border,'font':font}">test word</p>
+    <p :class="classObject">test word</p>
+  </div>
+  <div class="style1">一个class不能使用多次……
+    <p :style="styleObject">哈哈</p>
+    {{styleObject.color}}
+  </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+  new Vue({
+    el:"#hi",
+    data:{
+      id:[
+        1,2,3
+      ],
+    }
+  });
+  new Vue({
+    el:"#compute",
+    data:{
+      a:1,
+    },
+    computed:{
+      b:function(){
+        return this.a+1;
+      },
+      c:{
+        get:function(){
+          return this.b+1;
+        },
+        set:function(value){
+          this.c=value;
+        }
+      }
+    }
+  });
+  new Vue({
+    el:".style",
+    data:{
+      'border':true,
+      'font':true,
+      'classObject':{
+        'font':true,
+        'border':false,
+        'red':true,
+      },
+      'styleObject':{
+        'color':'red',
+        'font-size':'40px',
+      }
+    }
+  });
+  new Vue({
+    el:".style1",
+    data:{
+      'styleObject':{
+        'color':'red',
+        'font-size':'40px',
+      }
+    }
+  });
+</script>
+</html>
